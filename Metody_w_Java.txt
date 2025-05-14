@@ -1,0 +1,59 @@
+METODY W JAVA - NOTATKA
+
+1. Co to jest metoda?
+- Metoda to blok kodu, który wykonuje określone zadanie.
+- Metody są używane do organizacji kodu, wielokrotnego wykorzystania i rozdzielania logiki.
+
+2. Składnia metody:
+----------------
+modyfikatorDostępu typZwracany nazwaMetody(parametry) {
+    // ciało metody
+}
+----------------
+
+3. Przykład metody:
+----------------
+public class Kalkulator {
+    public int dodaj(int a, int b) {
+        return a + b;
+    }
+
+    public void powitanie() {
+        System.out.println("Witaj w kalkulatorze!");
+    }
+}
+----------------
+
+4. Rodzaje metod:
+- Metody zwracające wartość (np. `int`, `String`)
+- Metody void (nic nie zwracają)
+- Metody statyczne (należą do klasy, a nie obiektu)
+- Metody instancyjne (należą do obiektu)
+
+5. Przykład wywołania metody:
+----------------
+Kalkulator kalk = new Kalkulator();
+int suma = kalk.dodaj(5, 3);
+kalk.powitanie();
+----------------
+
+6. Parametry i argumenty:
+- Parametry to zmienne zadeklarowane w definicji metody.
+- Argumenty to wartości przekazywane do metody podczas jej wywołania.
+
+7. Modyfikatory dostępu:
+| Modyfikator | Opis                                          |
+|-------------|-----------------------------------------------|
+| public      | Dostępny wszędzie                             |
+| private     | Dostępny tylko w klasie                       |
+| protected   | Dostępny w pakiecie i przez dziedziczenie     |
+| brak        | Dostępny w pakiecie                           |
+
+8. Przeciążanie metod (overloading):
+- W jednej klasie można mieć kilka metod o tej samej nazwie, ale z różnymi parametrami.
+
+Przykład:
+----------------
+public void pokaz(String tekst) {...}
+public void pokaz(int liczba) {...}
+----------------

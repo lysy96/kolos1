@@ -1,0 +1,88 @@
+KOLEJKA (QUEUE) W JAVA - NOTATKA
+
+1. Co to jest `Queue`?
+- `Queue` to interfejs w Javie, który reprezentuje kolejkę — strukturę danych, która przechowuje elementy w sposób FIFO (First In, First Out), tzn. elementy są dodawane na końcu, a pobierane z początku.
+- Kolejka jest używana w sytuacjach, w których elementy muszą być przetwarzane w określonej kolejności, np. w systemach kolejkowania zadań lub w aplikacjach opartych na wątkach.
+
+2. Implementacje `Queue` w Javie:
+- **LinkedList**: Implementuje interfejs `Queue` i może być używana jako kolejka. Umożliwia szybkie operacje dodawania i usuwania elementów.
+- **PriorityQueue**: Implementacja kolejki, w której elementy są przetwarzane w porządku priorytetu, a nie w porządku FIFO. Elementy są porównywane za pomocą naturalnego porządku lub dostarczonego komparatora.
+- **ArrayBlockingQueue, LinkedBlockingQueue, ConcurrentLinkedQueue**: Specjalistyczne implementacje dla środowiska wielowątkowego, które oferują mechanizmy synchronizacji.
+
+3. Składnia tworzenia `Queue`:
+----------------
+import java.util.*;
+
+public class PrzykładQueue {
+    public static void main(String[] args) {
+        Queue<String> kolejka = new LinkedList<>();
+    }
+}
+----------------
+- W tym przypadku używamy `LinkedList` jako implementacji `Queue`.
+
+4. Podstawowe operacje na `Queue`:
+- **Dodawanie elementów**:
+    - `offer(E e)` – dodaje element do kolejki. Zwraca `true` jeśli element został pomyślnie dodany, `false` w przeciwnym przypadku (np. gdy kolejka jest pełna w przypadku ograniczonych kolejek).
+    - `add(E e)` – podobne do `offer()`, ale rzuca wyjątek, jeśli nie uda się dodać elementu.
+
+  Przykład:
+  ----------------
+  kolejka.offer("A");
+  kolejka.offer("B");
+  kolejka.add("C");  // Dodaje element "C"
+  ----------------
+
+- **Pobieranie elementów**:
+    - `poll()` – usuwa i zwraca pierwszy element w kolejce. Jeśli kolejka jest pusta, zwraca `null`.
+    - `remove()` – usuwa i zwraca pierwszy element w kolejce, ale rzuca wyjątek `NoSuchElementException`, jeśli kolejka jest pusta.
+    - `peek()` – zwraca pierwszy element w kolejce, ale nie usuwa go. Zwraca `null` jeśli kolejka jest pusta.
+    - `element()` – zwraca pierwszy element w kolejce, ale rzuca wyjątek `NoSuchElementException` jeśli kolejka jest pusta.
+
+  Przykład:
+  ----------------
+  String pierwszyElement = kolejka.peek();  // Zwraca "A" bez usuwania
+  String pobranyElement = kolejka.poll();  // Zwraca "A" i usuwa
+  ----------------
+
+- **Sprawdzanie rozmiaru kolejki**:
+    - `size()` – zwraca liczbę elementów w kolejce.
+    - `isEmpty()` – sprawdza, czy kolejka jest pusta.
+  
+  Przykład:
+  ----------------
+  System.out.println(kolejka.size());  // Zwraca liczbę elementów w kolejce
+  System.out.println(kolejka.isEmpty());  // Sprawdza, czy kolejka jest pusta
+  ----------------
+
+5. Iteracja po `Queue`:
+- Można iterować po elementach w kolejce za pomocą pętli `for-each` lub `Iterator`.
+
+  Przykład:
+  ----------------
+  for (String s : kolejka) {
+      System.out.println(s);
+  }
+  ----------------
+
+6. Zalety `Queue`:
+- **FIFO**: Kolejka zapewnia prostą strukturę do przechowywania elementów, które muszą być przetwarzane w kolejności ich przybycia.
+- **Synchronizacja**: Istnieją implementacje, które oferują synchronizację dla środowisk wielowątkowych, np. `BlockingQueue`.
+
+7. Wady `Queue`:
+- **Brak dostępu do elementów przez indeks**: Kolejki nie obsługują operacji na elementach w oparciu o indeks, co oznacza, że nie możemy np. łatwo dostać się do elementu w środku.
+- **Potrzebna synchronizacja w środowisku wielowątkowym**: Standardowe implementacje `Queue` (np. `LinkedList`) nie są synchronizowane, co może stanowić problem w aplikacjach wielowątkowych.
+
+8. Typy implementacji `Queue`:
+| Typ Kolejki      | Kolejność Elementów | Działania          | Uwagi                                        |
+|------------------|---------------------|--------------------|---------------------------------------------|
+| `LinkedList`     | FIFO                | Szybkie dodawanie i usuwanie z obu końców | Uniwersalne, stosunkowo szybkie w działaniu   |
+| `PriorityQueue`  | Na podstawie priorytetu | Operacje dodawania i usuwania w porządku priorytetu | Stosowana, gdy elementy mają priorytet       |
+| `ArrayBlockingQueue` | FIFO            | Synchronizowana, blokująca | Używana w środowiskach wielowątkowych        |
+| `ConcurrentLinkedQueue` | FIFO        | Nieblokująca, dla wielowątkowości | Stosowana w aplikacjach wymagających konkurencyjnego dostępu |
+
+9. Kiedy używać `Queue`?
+- **Kiedy potrzebujesz przechowywać elementy w kolejności ich przybycia** (FIFO).
+- **Kiedy elementy muszą być przetwarzane w sposób asynchroniczny** (np. w aplikacjach wielowątkowych).
+- **Kiedy potrzebujesz używać struktur danych do kolejkowania zadań** lub elementów w systemie, np. w aplikacjach serwerowych.
+

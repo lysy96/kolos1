@@ -1,0 +1,109 @@
+
+Rodzaje klas w Java
+
+W języku Java wyróżniamy kilka rodzajów klas, które różnią się budową, przeznaczeniem i sposobem użycia. Zrozumienie ich różnic jest kluczowe do tworzenia dobrze zaprojektowanych aplikacji obiektowych.
+
+1. Klasy standardowe (zwykłe)
+
+Najczęściej używany typ klasy. Zawiera pola, metody, konstruktory i ewentualnie klasy wewnętrzne.
+
+public class Samochod {
+    String marka;
+    String model;
+
+    public Samochod(String marka, String model) {
+        this.marka = marka;
+        this.model = model;
+    }
+
+    public void jedz() {
+        System.out.println("Samochód jedzie");
+    }
+}
+
+2. Klasy abstrakcyjne
+
+Klasy abstrakcyjne nie mogą być bezpośrednio instancjonowane. Służą jako wzorce dla klas dziedziczących. Mogą zawierać metody abstrakcyjne (bez implementacji) oraz metody zwykłe (z implementacją).
+
+public abstract class Zwierze {
+    public abstract void wydajDzwiek();
+
+    public void oddychaj() {
+        System.out.println("Oddycha");
+    }
+}
+
+3. Interfejsy
+
+Interfejsy definiują zbiór metod, które muszą być zaimplementowane przez klasy je implementujące. Od Javy 8 mogą zawierać również metody domyślne i statyczne.
+
+public interface Latajacy {
+    void lec();
+
+    default void start() {
+        System.out.println("Startuje");
+    }
+}
+
+4. Klasy wewnętrzne (nested classes)
+
+a) Klasa wewnętrzna niestatyczna
+Ma dostęp do wszystkich pól i metod klasy zewnętrznej.
+
+public class Zewnetrzna {
+    class Wewnetrzna {
+        void pokaz() {
+            System.out.println("Wewnątrz klasy zewnętrznej");
+        }
+    }
+}
+
+b) Klasa wewnętrzna statyczna (static nested class)
+Nie ma dostępu do instancji klasy zewnętrznej, tylko do pól statycznych.
+
+public class Zewnetrzna {
+    static class Wewnetrzna {
+        void pokaz() {
+            System.out.println("Statyczna klasa wewnętrzna");
+        }
+    }
+}
+
+c) Klasa lokalna (local class)
+Zdefiniowana wewnątrz metody.
+
+public class Przyklad {
+    void metoda() {
+        class Lokalna {
+            void pokaz() {
+                System.out.println("Lokalna klasa w metodzie");
+            }
+        }
+        Lokalna l = new Lokalna();
+        l.pokaz();
+    }
+}
+
+d) Klasa anonimowa
+Klasa bez nazwy, zwykle używana do jednorazowej implementacji interfejsów lub klas abstrakcyjnych.
+
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Anonimowa klasa");
+    }
+};
+
+5. Klasy finalne
+
+Klasy oznaczone jako final nie mogą być dziedziczone.
+
+public final class NieDziedzicz {
+    // kod klasy
+}
+
+6. Klasy rekordowe (od Java 16)
+
+Służą do definiowania niezmiennych struktur danych z automatycznym generowaniem metod equals, hashCode, toString, itd.
+
+public record Osoba(String imie, String nazwisko) {}

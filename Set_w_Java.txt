@@ -1,0 +1,100 @@
+SET W JAVA - NOTATKA
+
+1. Co to jest `Set`?
+- `Set` to zbiór, który jest kolekcją, która nie przechowuje duplikatów.
+- Elementy w `Set` nie są uporządkowane, tzn. nie gwarantują żadnej konkretnej kolejności.
+- `Set` implementuje interfejs `Collection`, ale nie posiada indeksów jak `List`.
+
+2. Właściwości `Set`:
+- **Brak duplikatów**: Zbiór nie pozwala na przechowywanie elementów, które już w nim istnieją.
+- **Brak gwarancji kolejności**: Kolejność przechowywanych elementów nie jest zapewniona (chyba że używasz `LinkedHashSet`).
+- `Set` nie obsługuje operacji opartych na indeksach, takich jak `get(int index)`.
+
+3. Typy implementacji `Set`:
+- **HashSet**: Używa haszowania do przechowywania elementów. Szybka operacja dodawania, usuwania i sprawdzania istnienia elementu (O(1) w przeciętnych przypadkach). Nie gwarantuje kolejności elementów.
+- **LinkedHashSet**: Podobne do `HashSet`, ale dodatkowo zachowuje kolejność, w jakiej elementy zostały dodane do zbioru.
+- **TreeSet**: Przechowuje elementy w porządku naturalnym (albo według dostarczonego komparatora). Operacje są wolniejsze niż w `HashSet` (O(log n)).
+
+4. Składnia tworzenia `Set`:
+----------------
+import java.util.*;
+
+public class PrzykładSet {
+    public static void main(String[] args) {
+        Set<String> zbior = new HashSet<>();
+    }
+}
+----------------
+
+5. Podstawowe operacje na `Set`:
+- **Dodawanie elementów**:
+    - `add(E e)` – dodaje element do zbioru, zwraca `true` jeśli element został dodany, `false` jeśli element już istnieje.
+
+    Przykład:
+    ----------------
+    zbior.add("A");
+    zbior.add("B");
+    zbior.add("A");  // Duplikat nie zostanie dodany
+    ----------------
+
+- **Usuwanie elementów**:
+    - `remove(Object o)` – usuwa element z zestawu.
+  
+    Przykład:
+    ----------------
+    zbior.remove("B");  // Usuwa "B" ze zbioru
+    ----------------
+
+- **Sprawdzanie zawartości**:
+    - `contains(Object o)` – sprawdza, czy zbiór zawiera dany element.
+  
+    Przykład:
+    ----------------
+    System.out.println(zbior.contains("A"));  // true
+    ----------------
+
+- **Rozmiar zbioru**:
+    - `size()` – zwraca liczbę elementów w zbiorze.
+  
+    Przykład:
+    ----------------
+    System.out.println(zbior.size());  // 1 (po usunięciu "B")
+    ----------------
+
+6. Iteracja po `Set`:
+- Ponieważ `Set` nie gwarantuje kolejności, do iteracji można użyć `for-each` lub `Iterator`.
+
+  Przykład:
+  ----------------
+  for (String s : zbior) {
+      System.out.println(s);
+  }
+  ----------------
+  - Można również użyć `Iterator`:
+  ----------------
+  Iterator<String> iterator = zbior.iterator();
+  while (iterator.hasNext()) {
+      System.out.println(iterator.next());
+  }
+  ----------------
+
+7. Zalety `Set`:
+- **Brak duplikatów**: Automatycznie zapewnia, że w zbiorze nie pojawią się powtórzenia.
+- **Szybkie operacje**: W `HashSet` operacje dodawania, usuwania i sprawdzania elementów są zazwyczaj szybkie (O(1)).
+- **Użyteczność**: Idealne do przechowywania unikalnych elementów, np. listy unikalnych identyfikatorów.
+
+8. Wady `Set`:
+- **Brak dostępu do elementów przez indeks**: Nie można uzyskać elementu przez jego indeks jak w przypadku `List`.
+- **Brak gwarancji kolejności**: W większości implementacji `Set`, kolejność elementów jest nieokreślona.
+
+9. Porównanie implementacji `Set`:
+| Typ `Set`         | Gwarancja kolejności | Złożoność operacji | Uwagi                                        |
+|-------------------|----------------------|--------------------|---------------------------------------------|
+| `HashSet`         | Brak                 | O(1)               | Szybkie operacje, brak kolejności           |
+| `LinkedHashSet`   | Kolejność dodawania  | O(1)               | Zachowuje kolejność dodawania elementów     |
+| `TreeSet`         | Kolejność naturalna  | O(log n)           | Przechowuje elementy w porządku naturalnym  |
+
+10. Kiedy używać `Set`?
+- **Kiedy potrzebujesz kolekcji unikalnych elementów**.
+- **Kiedy kolejność elementów nie jest istotna**, chyba że używasz `LinkedHashSet` lub `TreeSet`.
+

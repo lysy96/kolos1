@@ -1,0 +1,100 @@
+KONTENERY W JAVA - NOTATKA
+
+1. Co to są kontenery w Javie?
+- Kontenery to specjalne struktury danych, które przechowują i zarządzają zbiorami obiektów.
+- W Javie kontenery znajdują się głównie w ramach pakietu `java.util` i pozwalają na przechowywanie obiektów w sposób, który umożliwia łatwy dostęp, modyfikację, dodawanie i usuwanie elementów.
+
+2. Typy kontenerów:
+- **Listy** (List)
+- **Zbiory** (Set)
+- **Mapy** (Map)
+- **Kolejki** (Queue)
+- **Stosy** (Stack)
+
+3. Interfejsy kontenerów:
+- **List** – Kolekcja, która przechowuje elementy w określonej kolejności (indeksowane).
+- **Set** – Kolekcja, która nie dopuszcza duplikatów i nie gwarantuje żadnej kolejności.
+- **Queue** – Kolekcja przechowująca elementy w kolejności, w jakiej zostały dodane, z możliwością przetwarzania w sposób FIFO (First In, First Out).
+- **Map** – Kolekcja, która przechowuje pary klucz-wartość.
+
+4. Przykład kontenera `List`:
+----------------
+import java.util.*;
+
+public class PrzykładList {
+    public static void main(String[] args) {
+        List<String> lista = new ArrayList<>();
+        lista.add("A");
+        lista.add("B");
+        lista.add("C");
+
+        System.out.println(lista);  // [A, B, C]
+    }
+}
+----------------
+- `ArrayList` – Implementacja listy, która przechowuje elementy w tablicy dynamicznej.
+
+5. Przykład kontenera `Set`:
+----------------
+import java.util.*;
+
+public class PrzykładSet {
+    public static void main(String[] args) {
+        Set<String> zbior = new HashSet<>();
+        zbior.add("A");
+        zbior.add("B");
+        zbior.add("A");  // Duplikat nie zostanie dodany
+
+        System.out.println(zbior);  // [A, B]
+    }
+}
+----------------
+- `HashSet` – Implementacja zbioru, która nie dopuszcza duplikatów i nie gwarantuje kolejności.
+
+6. Przykład kontenera `Map`:
+----------------
+import java.util.*;
+
+public class PrzykładMap {
+    public static void main(String[] args) {
+        Map<String, String> mapa = new HashMap<>();
+        mapa.put("klucz1", "wartosc1");
+        mapa.put("klucz2", "wartosc2");
+
+        System.out.println(mapa.get("klucz1"));  // wartosc1
+    }
+}
+----------------
+- `HashMap` – Implementacja mapy, która przechowuje pary klucz-wartość i pozwala na szybki dostęp do wartości na podstawie klucza.
+
+7. Przykład kontenera `Queue`:
+----------------
+import java.util.*;
+
+public class PrzykładQueue {
+    public static void main(String[] args) {
+        Queue<String> kolejka = new LinkedList<>();
+        kolejka.add("A");
+        kolejka.add("B");
+        kolejka.add("C");
+
+        System.out.println(kolejka.poll());  // A
+    }
+}
+----------------
+- `LinkedList` – Implementacja kolejki, która przechowuje elementy w porządku FIFO.
+
+8. Różnice między kontenerami:
+| Kontener | Opis                                                      |
+|----------|-----------------------------------------------------------|
+| **List** | Przechowuje elementy w określonej kolejności, może zawierać duplikaty |
+| **Set**  | Nie dopuszcza duplikatów, elementy mogą być w dowolnej kolejności |
+| **Queue**| Przechowuje elementy w porządku FIFO (First In, First Out) |
+| **Map**  | Przechowuje pary klucz-wartość, szybki dostęp do wartości za pomocą klucza |
+
+9. Wybór odpowiedniego kontenera:
+- **ArrayList**: Kiedy potrzebujesz szybkiego dostępu do elementów przez indeks.
+- **HashSet**: Kiedy chcesz przechować unikalne elementy bez zachowania kolejności.
+- **HashMap**: Kiedy musisz przechowywać dane w postaci par klucz-wartość.
+- **LinkedList**: Kiedy często dodajesz i usuwasz elementy z początku lub końca listy.
+

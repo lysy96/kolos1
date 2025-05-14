@@ -1,0 +1,70 @@
+ENKAPSULACJA W JAVA - NOTATKA
+
+1. Co to jest enkapsulacja?
+- Enkapsulacja (ang. encapsulation) to mechanizm ukrywania szczegółów implementacyjnych klasy oraz ochrona danych przed nieautoryzowanym dostępem.
+- Pozwala kontrolować sposób dostępu do pól (atrybutów) klasy za pomocą metod (getterów i setterów).
+- Podstawowa zasada: pola klasy są prywatne (private), a dostęp do nich odbywa się poprzez publiczne metody.
+
+2. Cele enkapsulacji:
+- Ochrona danych (ukrywanie danych przed bezpośrednim dostępem).
+- Zapewnienie integralności danych (walidacja danych przed ich zmianą).
+- Uproszczenie używania klasy (interfejs ukrywa złożoność).
+
+3. Przykład bez enkapsulacji:
+----------------
+public class Osoba {
+    public String imie;
+    public int wiek;
+}
+----------------
+
+Problem:
+- Można bez kontroli ustawić nieprawidłowy wiek:
+`osoba.wiek = -5;`
+
+4. Przykład z enkapsulacją:
+----------------
+public class Osoba {
+    private String imie;
+    private int wiek;
+
+    public String getImie() {
+        return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public int getWiek() {
+        return wiek;
+    }
+
+    public void setWiek(int wiek) {
+        if (wiek >= 0) {
+            this.wiek = wiek;
+        } else {
+            System.out.println("Błędny wiek!");
+        }
+    }
+}
+----------------
+
+5. Zalety enkapsulacji:
+- Chroni pola przed nieautoryzowanym dostępem.
+- Pozwala dodać logikę walidacyjną w setterach.
+- Ułatwia modyfikację klasy bez wpływu na kod używający tej klasy.
+- Poprawia czytelność i utrzymanie kodu.
+
+6. Wzorzec enkapsulacji w Javie:
+| Element         | Opis                                |
+|-----------------|-------------------------------------|
+| Pola klasy      | `private`                          |
+| Gettery         | `public` zwracają wartość pola     |
+| Settery         | `public` ustawiają wartość pola    |
+
+Przykład getter i setter:
+----------------
+public String getNazwa() {...}
+public void setNazwa(String nazwa) {...}
+----------------

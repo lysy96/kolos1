@@ -1,0 +1,66 @@
+DZIEDZICZENIE W JAVA - NOTATKA
+
+1. Co to jest dziedziczenie?
+- Dziedziczenie to mechanizm, który pozwala na tworzenie nowej klasy (klasy pochodnej), która przejmuje właściwości (pola) i zachowania (metody) z klasy bazowej (superklasy).
+- Dziedziczenie umożliwia ponowne wykorzystanie kodu oraz rozszerzanie funkcjonalności bez konieczności ponownego pisania tych samych metod.
+
+2. Składnia dziedziczenia:
+----------------
+public class Podklasa extends Superklasa {
+    // Dodatkowe pola i metody
+}
+----------------
+
+3. Przykład dziedziczenia:
+----------------
+public class Zwierze {
+    public void dzwiek() {
+        System.out.println("Zwierzę wydaje dźwięk.");
+    }
+}
+
+public class Pies extends Zwierze {
+    public void dzwiek() {
+        System.out.println("Pies szczeka.");
+    }
+}
+----------------
+
+4. Tworzenie obiektu klasy pochodnej:
+----------------
+Pies mojPies = new Pies();
+mojPies.dzwiek();  // Wydrukuje: Pies szczeka.
+----------------
+
+5. Słowo kluczowe `super`:
+- `super` odnosi się do klasy bazowej i jest używane do:
+  - Wywoływania konstruktorów klasy bazowej.
+  - Dostępu do metod i pól klasy bazowej, które zostały nadpisane.
+
+Przykład użycia `super`:
+----------------
+public class Pies extends Zwierze {
+    public void dzwiek() {
+        super.dzwiek();  // Wywołanie metody z klasy Zwierze
+        System.out.println("Pies szczeka.");
+    }
+}
+----------------
+
+6. Zalety dziedziczenia:
+- Reużywalność kodu (nie trzeba pisać tych samych metod i pól w wielu klasach).
+- Możliwość rozbudowy klasy bez zmiany istniejącego kodu.
+- Zwiększenie modularności aplikacji.
+
+7. Typy dziedziczenia:
+- **Jedno dziedziczenie**: Klasa może dziedziczyć tylko z jednej klasy bazowej (Java obsługuje tylko jedno dziedziczenie klas).
+- **Wielokrotne dziedziczenie** (tylko w interfejsach): W Javie klasy nie mogą dziedziczyć po wielu klasach, ale mogą implementować wiele interfejsów.
+
+8. Dziedziczenie a modyfikatory dostępu:
+| Modyfikator | Opis                                             |
+|-------------|--------------------------------------------------|
+| `public`    | Pole/metoda dostępna w całej aplikacji           |
+| `protected` | Pole/metoda dostępna w tej klasie, w pakiecie i klasach pochodnych |
+| `private`   | Pole/metoda dostępna tylko w tej klasie          |
+| (brak)      | Pole/metoda dostępna tylko w pakiecie            |
+

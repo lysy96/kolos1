@@ -1,0 +1,116 @@
+MAP (HASHMAP) W JAVA - NOTATKA
+
+1. Co to jest `Map`?
+- `Map` to interfejs, który reprezentuje strukturę danych przechowującą pary klucz-wartość.
+- W Javie `Map` nie jest dziedziczone z `Collection`, ponieważ klucz w mapie nie jest traktowany jako element w zbiorze.
+- Elementy w `Map` są przechowywane w formie par, gdzie każdy klucz jest unikalny, a każdemu kluczowi przypisana jest wartość.
+
+2. Co to jest `HashMap`?
+- `HashMap` to jedna z implementacji interfejsu `Map`, która przechowuje dane w postaci par klucz-wartość.
+- `HashMap` używa algorytmu haszowania do przechowywania danych, co zapewnia szybki dostęp do wartości na podstawie klucza.
+- Nie gwarantuje żadnej konkretnej kolejności przechowywanych elementów.
+
+3. Składnia tworzenia `HashMap`:
+----------------
+import java.util.*;
+
+public class PrzykładHashMap {
+    public static void main(String[] args) {
+        Map<String, Integer> mapa = new HashMap<>();
+    }
+}
+----------------
+- `Map<String, Integer>` oznacza mapę, w której klucze są typu `String`, a wartości są typu `Integer`.
+
+4. Podstawowe operacje na `HashMap`:
+- **Dodawanie elementów**:
+    - `put(K key, V value)` – dodaje parę klucz-wartość do mapy.
+    - Jeśli klucz już istnieje, wartość przypisana do tego klucza zostaje zaktualizowana.
+  
+  Przykład:
+  ----------------
+  mapa.put("A", 1);
+  mapa.put("B", 2);
+  mapa.put("A", 3);  // Klucz "A" zostaje zaktualizowany do wartości 3
+  ----------------
+
+- **Dostęp do wartości**:
+    - `get(Object key)` – zwraca wartość przypisaną do danego klucza. Jeśli klucz nie istnieje, zwraca `null`.
+  
+  Przykład:
+  ----------------
+  Integer wartosc = mapa.get("A");  // Zwróci 3
+  System.out.println(wartosc);
+  ----------------
+
+- **Usuwanie elementów**:
+    - `remove(Object key)` – usuwa parę klucz-wartość na podstawie klucza.
+  
+  Przykład:
+  ----------------
+  mapa.remove("B");  // Usuwa parę (B, 2)
+  ----------------
+
+- **Sprawdzanie istnienia klucza lub wartości**:
+    - `containsKey(Object key)` – sprawdza, czy mapa zawiera określony klucz.
+    - `containsValue(Object value)` – sprawdza, czy mapa zawiera określoną wartość.
+
+  Przykład:
+  ----------------
+  boolean maKlucz = mapa.containsKey("A");  // true
+  boolean maWartosc = mapa.containsValue(3);  // true
+  ----------------
+
+- **Rozmiar mapy**:
+    - `size()` – zwraca liczbę par klucz-wartość w mapie.
+  
+  Przykład:
+  ----------------
+  System.out.println(mapa.size());  // Zwróci 1, po usunięciu "B"
+  ----------------
+
+5. Iteracja po `HashMap`:
+- Można iterować po mapie za pomocą `keySet()`, `values()`, lub `entrySet()`.
+
+  - **Iteracja po kluczach**:
+  ----------------
+  for (String klucz : mapa.keySet()) {
+      System.out.println(klucz);
+  }
+  ----------------
+
+  - **Iteracja po wartościach**:
+  ----------------
+  for (Integer wartosc : mapa.values()) {
+      System.out.println(wartosc);
+  }
+  ----------------
+
+  - **Iteracja po parach klucz-wartość**:
+  ----------------
+  for (Map.Entry<String, Integer> entry : mapa.entrySet()) {
+      System.out.println(entry.getKey() + ": " + entry.getValue());
+  }
+  ----------------
+
+6. Zalety `HashMap`:
+- **Szybka operacja dostępu**: Dzięki zastosowaniu haszowania, operacje `put`, `get` i `remove` są średnio O(1) (w przeciętnych przypadkach).
+- **Elastyczność**: Mapa pozwala na przechowywanie dowolnych typów obiektów jako kluczy i wartości (muszą implementować odpowiednie metody, takie jak `hashCode()` i `equals()`).
+- **Brak duplikatów kluczy**: Mapa automatycznie nadpisuje wartości dla istniejących kluczy.
+
+7. Wady `HashMap`:
+- **Brak gwarancji kolejności**: Klucze i wartości w `HashMap` są przechowywane bez zachowania jakiejkolwiek kolejności (chyba że użyjesz `LinkedHashMap`, która zachowuje kolejność dodawania).
+- **Nie synchronizowana**: `HashMap` nie jest bezpieczna w środowisku wielowątkowym. W przypadku wielowątkowości należy użyć `ConcurrentHashMap` lub synchronizować dostęp do mapy ręcznie.
+
+8. Porównanie `HashMap` i innych implementacji `Map`:
+| Typ Mapy        | Gwarancja kolejności     | Złożoność operacji  | Uwagi                                               |
+|-----------------|--------------------------|---------------------|----------------------------------------------------|
+| `HashMap`       | Brak                     | O(1)                | Szybka, ale brak gwarancji kolejności              |
+| `LinkedHashMap` | Kolejność dodawania      | O(1)                | Zachowuje kolejność dodawania elementów            |
+| `TreeMap`       | Kolejność naturalna      | O(log n)            | Elementy są przechowywane w porządku naturalnym lub wg dostarczonego komparatora |
+
+9. Kiedy używać `HashMap`?
+- **Kiedy potrzebujesz przechowywać dane w postaci par klucz-wartość**.
+- **Kiedy dostęp do wartości na podstawie klucza ma być szybki**.
+- **Kiedy kolejność elementów nie jest istotna** (jeśli potrzebujesz zachować kolejność, rozważ `LinkedHashMap`).
+

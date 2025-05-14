@@ -1,0 +1,87 @@
+STOS (STACK) W JAVA - NOTATKA
+
+1. Co to jest `Stack`?
+- `Stack` to struktura danych oparta na zasadzie LIFO (Last In, First Out), tzn. ostatni dodany element jest pierwszym, który jest usuwany.
+- Jest to struktura, która działa jak stos talerzy: talerz dodany na górę jest pierwszym, który zostanie zdjęty.
+- `Stack` jest szczególnym przypadkiem kolejek, w których operacje odbywają się w odwrotnej kolejności, niż zostały wprowadzone.
+
+2. Implementacja `Stack` w Javie:
+- W Javie `Stack` jest klasą dziedziczącą po klasie `Vector` i implementuje interfejs `List`. Chociaż `Stack` jest dostępny, jego użycie nie jest zalecane w nowych projektach, ponieważ jest przestarzałe. Zamiast niego, zaleca się używanie klasy `Deque` lub `ArrayDeque`.
+  
+3. Składnia tworzenia `Stack`:
+----------------
+import java.util.*;
+
+public class PrzykładStack {
+    public static void main(String[] args) {
+        Stack<String> stos = new Stack<>();
+    }
+}
+----------------
+- Tworzymy nowy obiekt klasy `Stack`, w którym elementy będą typu `String`.
+
+4. Podstawowe operacje na `Stack`:
+- **Dodawanie elementów**:
+    - `push(E item)` – dodaje element na szczyt stosu.
+  
+  Przykład:
+  ----------------
+  stos.push("A");
+  stos.push("B");
+  stos.push("C");  // Na stosie są teraz "A", "B", "C"
+  ----------------
+
+- **Usuwanie i pobieranie elementów**:
+    - `pop()` – usuwa i zwraca element z szczytu stosu. Rzuca wyjątek `EmptyStackException` jeśli stos jest pusty.
+    - `peek()` – zwraca element na szczycie stosu, ale go nie usuwa. Rzuca wyjątek `EmptyStackException` jeśli stos jest pusty.
+
+  Przykład:
+  ----------------
+  String element = stos.pop();  // Zwraca "C" i usuwa
+  String szczyt = stos.peek();  // Zwraca "B" (bez usuwania)
+  ----------------
+
+- **Sprawdzanie rozmiaru stosu**:
+    - `size()` – zwraca liczbę elementów w stosie.
+    - `isEmpty()` – sprawdza, czy stos jest pusty.
+  
+  Przykład:
+  ----------------
+  System.out.println(stos.size());  // Zwróci 2, ponieważ "C" zostało usunięte
+  System.out.println(stos.isEmpty());  // Zwróci false
+  ----------------
+
+5. Iteracja po `Stack`:
+- Można iterować po stosie za pomocą pętli `for-each` lub `Iterator`. Jednak należy pamiętać, że iteracja nie będzie odbywać się w LIFO, tylko w porządku od dolnej części stosu do szczytu.
+
+  Przykład:
+  ----------------
+  for (String s : stos) {
+      System.out.println(s);  // Przeiteruje po elementach w porządku dodania
+  }
+  ----------------
+
+6. Zalety `Stack`:
+- **LIFO**: Stos zapewnia łatwy dostęp do ostatnio dodanych elementów, co czyni go odpowiednim do rozwiązywania problemów, w których wymagana jest taka kolejność operacji, np. w algorytmach przetwarzania nawrotnego.
+- **Prosta implementacja**: Operacje na stosie są bardzo proste i szybkie.
+
+7. Wady `Stack`:
+- **Przestarzała implementacja**: Klasa `Stack` jest uważana za przestarzałą. Jej użycie nie jest zalecane w nowych aplikacjach. Zamiast tego, można używać klasy `Deque` lub `ArrayDeque`.
+- **Brak synchronizacji**: `Stack` nie jest synchronizowany, co może stanowić problem w aplikacjach wielowątkowych.
+
+8. Porównanie `Stack` z innymi strukturami danych:
+| Typ Stosu         | Złożoność operacji  | Uwagi                                        |
+|-------------------|---------------------|---------------------------------------------|
+| `Stack`           | O(1) dla `push`, `pop` | Przestarzała, nie jest zalecana do nowych projektów |
+| `ArrayDeque`      | O(1) dla `add`, `remove` | Zalecana alternatywa, szybsza niż `Stack`    |
+| `LinkedList`      | O(1) dla `add`, `remove` | Może być używana jako stos, bardziej elastyczna |
+
+9. Zastosowania `Stack`:
+- **Algorytmy rekurencyjne**: Stos jest używany do implementacji algorytmów rekurencyjnych, które mogą być zamienione na iteracyjne z wykorzystaniem stosu (np. algorytmy DFS).
+- **Zarządzanie historią**: Stos jest często wykorzystywany w aplikacjach do zarządzania historią, np. w funkcji "Cofnij" w edytorach tekstu.
+- **Analiza wyrażeń matematycznych**: Stos jest przydatny w algorytmach do analizy i obliczania wyrażeń w notacji odwrotnej (np. w obliczaniu wyrażeń w notacji postfiksowej).
+
+10. Alternatywy dla `Stack`:
+- **Deque** (Double-Ended Queue): Może być używane zarówno jako stos, jak i kolejka. Jest bardziej elastyczne i oferuje lepszą wydajność.
+- **ArrayDeque**: Jest to preferowana implementacja stosu, oferująca lepszą wydajność niż `Stack`, ponieważ nie dziedziczy po `Vector` i jest bardziej wydajna w zakresie alokacji pamięci.
+

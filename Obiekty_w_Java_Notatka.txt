@@ -1,0 +1,49 @@
+
+OBIEKTY W JAVA - NOTATKA
+
+1. Co to jest obiekt?
+- Obiekt to instancja klasy.
+- Ma stan (atrybuty/pola) i zachowanie (metody).
+
+2. Klasa
+- Szablon opisujący dane i zachowanie obiektu.
+
+Przykład klasy:
+----------------
+public class Samochod {
+    String marka;
+    String model;
+    int rokProdukcji;
+
+    public Samochod(String marka, String model, int rokProdukcji) {
+        this.marka = marka;
+        this.model = model;
+        this.rokProdukcji = rokProdukcji;
+    }
+
+    public void uruchomSilnik() {
+        System.out.println("Silnik " + marka + " " + model + " został uruchomiony.");
+    }
+}
+----------------
+
+3. Tworzenie obiektu:
+----------------
+Samochod mojSamochod = new Samochod("Toyota", "Corolla", 2020);
+mojSamochod.uruchomSilnik();
+----------------
+
+4. Wynik działania:
+- Silnik Toyota Corolla został uruchomiony.
+- Marka: Toyota
+- Model: Corolla
+- Rok produkcji: 2020
+
+5. Ważne pojęcia:
+| Pojęcie        | Opis                                         |
+|----------------|----------------------------------------------|
+| Klasa          | Szablon obiektów                             |
+| Obiekt         | Konkretna instancja klasy                    |
+| Pola           | Atrybuty przechowujące stan obiektu          |
+| Metody         | Funkcje definiujące zachowanie obiektu       |
+| Konstruktor    | Metoda tworząca i inicjalizująca obiekt      |

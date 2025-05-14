@@ -1,0 +1,99 @@
+ARRAYLIST / LISTA W JAVA - NOTATKA
+
+1. Co to jest `ArrayList`?
+- `ArrayList` to dynamiczna tablica, która implementuje interfejs `List` w Javie.
+- Umożliwia przechowywanie elementów w określonej kolejności, pozwala na dostęp do elementów przez indeks.
+- W przeciwieństwie do zwykłej tablicy, rozmiar `ArrayList` może się zmieniać w czasie działania programu.
+
+2. Składnia tworzenia `ArrayList`:
+----------------
+import java.util.ArrayList;
+import java.util.List;
+
+public class Przykład {
+    public static void main(String[] args) {
+        List<String> lista = new ArrayList<>();
+    }
+}
+----------------
+- `ArrayList` może przechowywać obiekty dowolnego typu (wymaga użycia generyków, np. `<String>`).
+- `List` jest interfejsem, a `ArrayList` jego implementacją.
+
+3. Podstawowe operacje na `ArrayList`:
+- **Dodawanie elementów**:
+    - `add(E e)` – dodaje element na końcu listy.
+    - `add(int index, E element)` – wstawia element na określoną pozycję.
+  
+  Przykład:
+  ----------------
+  lista.add("A");
+  lista.add("B");
+  lista.add(1, "C");  // Wstawia C na pozycji 1
+  ----------------
+
+- **Dostęp do elementów**:
+    - `get(int index)` – zwraca element na wskazanej pozycji.
+  
+  Przykład:
+  ----------------
+  String element = lista.get(1);  // Pobiera element na pozycji 1
+  System.out.println(element);  // Wydrukuje "C"
+  ----------------
+
+- **Usuwanie elementów**:
+    - `remove(int index)` – usuwa element na określonej pozycji.
+    - `remove(Object o)` – usuwa pierwszy napotkany element równy podanemu obiektowi.
+  
+  Przykład:
+  ----------------
+  lista.remove(0);  // Usuwa element na pozycji 0
+  lista.remove("B");  // Usuwa element "B"
+  ----------------
+
+- **Rozmiar listy**:
+    - `size()` – zwraca liczbę elementów w liście.
+  
+  Przykład:
+  ----------------
+  System.out.println(lista.size());  // Wydrukuje rozmiar listy
+  ----------------
+
+4. Iteracja po `ArrayList`:
+- Można iterować po elementach listy za pomocą pętli `for`, `for-each`, lub `Iterator`.
+
+  Przykłady:
+  ----------------
+  // Za pomocą pętli for
+  for (int i = 0; i < lista.size(); i++) {
+      System.out.println(lista.get(i));
+  }
+
+  // Za pomocą pętli for-each
+  for (String s : lista) {
+      System.out.println(s);
+  }
+  ----------------
+
+5. Zalety `ArrayList`:
+- **Dynamiczny rozmiar** – nie musisz określać rozmiaru listy z góry.
+- **Szybki dostęp** – dostęp do elementu za pomocą indeksu jest bardzo szybki (O(1)).
+- **Prosta w użyciu** – łatwa do implementacji i używania.
+
+6. Wady `ArrayList`:
+- **Wydajność przy usuwaniu/innym przesuwaniu elementów** – operacje usuwania i wstawiania elementów w środek listy są kosztowne (O(n)).
+- **Brak synchronizacji** – `ArrayList` nie jest synchronizowany, co oznacza, że w przypadku wielowątkowości może wystąpić problem z równoczesnym dostępem do listy.
+
+7. Porównanie `ArrayList` i `LinkedList`:
+| Aspekt            | `ArrayList`                         | `LinkedList`                        |
+|-------------------|-------------------------------------|-------------------------------------|
+| **Dostęp przez indeks** | Szybki (O(1))                     | Wolniejszy (O(n))                   |
+| **Dodawanie na końcu** | Szybkie (średnio O(1))             | Szybkie (O(1))                      |
+| **Dodawanie/usuwanie w środku** | Wolne (O(n))                  | Szybkie (O(1)) w przypadku dostępu do węzła |
+| **Pamięć**        | Zajmuje mniej pamięci               | Zajmuje więcej pamięci (wymaga dodatkowych wskaźników) |
+
+8. Wybór `ArrayList`:
+- Używaj `ArrayList` wtedy, gdy:
+  - Potrzebujesz częstego dostępu do elementów przez indeks.
+  - Działania na końcu listy są wystarczające (np. dodawanie lub usuwanie).
+  - Wydajność przy przesuwaniu elementów nie stanowi problemu.
+

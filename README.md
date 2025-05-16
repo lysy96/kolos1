@@ -458,6 +458,33 @@ stack.push(new RaceCar("AWD", 870, 400.0f, 90.0f));
     //ogólne#fori - pętla for liczbowa
     //ogóle#for - pętla po tablicy
 
+    sortowanie strumienia:
+     List<String> names = List.of("Jan", "Anna", "Marek", "Zofia");
+
+        List<String> sortedNames = names.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Posortowane nazwy: " + sortedNames);
+
+        modyfikacja danych:
+        List<String> names = List.of("Jan", "Anna", "Marek", "Zofia");
+
+        List<String> upperCaseNames = names.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+
+        System.out.println("Nazwy z wielkimi literami: " + upperCaseNames);
+
+        liczby parzyste:
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        List<Integer> evenNumbers = numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .collect(Collectors.toList());
+
+        System.out.println("Liczby parzyste: " + evenNumbers);
+
 
 
 

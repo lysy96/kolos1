@@ -486,6 +486,22 @@ stack.push(new RaceCar("AWD", 870, 400.0f, 90.0f));
         System.out.println("Liczby parzyste: " + evenNumbers);
 
 
+    //String#split([znak dzielnik]) - dzieli tekst przez podany znak
+    //String#split([znak dzielnik], [limit]) - dzieli tekst przez podany znak
+    //String#replace([co zamienić], [na co zamienić]) - zamienia podany znak na inny w tekście
+    //String#toLowerCase
+    //String#toUpperCase
+    //String#trim - usuwa spacje z początku i końca tekstu
+    // "  dkskstas sadi qwrn yt   " -> "dkskstas sadi qwrn yt"
+    //String#length - długość
+    //String#toCharArray -
+    //String#equals -
+    //String#equalsIgnoreCase - "asssa" == "ASSsA" true
+
+    //ogólne#var - zapis do zmiennej
+    //ogólne#fori - pętla for liczbowa
+    //ogóle#for - pętla po tablicy
+
 
 
 

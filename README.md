@@ -502,6 +502,17 @@ stack.push(new RaceCar("AWD", 870, 400.0f, 90.0f));
     //ogólne#fori - pętla for liczbowa
     //ogóle#for - pętla po tablicy
 
+    STRUMIEN
+
+    List<String> namesList = Arrays.asList("John", "Marry", "George", "Paul", "Alice", "Ann");
+
+        namesList
+                .stream()
+                .filter(e -> e.startsWith("A"))
+                .map(String::toUpperCase)
+                .sorted()
+                .forEach(System.out::println);
+
 
 
 
